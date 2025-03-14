@@ -1,6 +1,7 @@
 package com.ptintercompoland.learn;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -20,16 +21,30 @@ public class TestTokped {
     options.addArguments("--start-maximized");
     options.setBinary("C:\\chrome-win64\\chrome.exe");
     driver = new ChromeDriver(options);
-    driver.get("https://www.tokopedia.com/");
+    driver.get("https://www.cermati.com");
   }
 
   @Test
-  public void test01() {
-    String expect = "Sepatu";
-    WebElement search = driver.findElement(By.xpath("//*[@type='search']"));
-    search.sendKeys(expect, Keys.ENTER);
+  public void test01() throws InterruptedException {
+    // String expect = "Sepatu";
+    // WebElement search = driver.findElement(By.xpath("//*[@type='search']"));
+    // search.sendKeys(expect, Keys.ENTER);
 
-    Assert.assertEquals(search.getAttribute("value"), expect);
+    // search = driver.findElement(By.xpath("//*[@type='search']"));
+    // String actual = search.getAttribute("value");
+
+    // JavascriptExecutor jse = (JavascriptExecutor) driver;
+    // jse.executeAsyncScript("document.querySelector(\"#mobilePhone\").value =
+    // \"ayam\"");
+    // Thread.sleep(15000);
+    // Assert.assertTrue(!actual.isEmpty());
+
+    JavascriptExecutor jse = (JavascriptExecutor) driver;
+    jse.executeAsyncScript("scrollTo({" + //
+        "  top: 2000," + //
+        "  behavior: 'smooth'," + //
+        "});");
+    Thread.sleep(15000);
   }
 
   @AfterClass
